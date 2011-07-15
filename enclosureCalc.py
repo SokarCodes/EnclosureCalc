@@ -167,4 +167,7 @@ class enclosureManager:
     
     def getDepth(self):
         return self.depth
-    
+
+if __name__ == "__main__":
+    print 'This file is designed to be imported from actual main-program. \nAPI is here so make use of it.'
+    print 'Program ending'
