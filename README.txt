@@ -10,3 +10,4 @@ Version history:
   10.7.2011 v0.1, first implementation of simple volume calculator using user given inputs
   11.7.2011 v0.2, Started implementing enclosureManager class
   12.7.2011 v0.2.5 Continued class development. Also slight optimizations to code structure.
+  15.7.2011 v0.2.9 Made github project and separated test method and enclosureManager class to different files.
