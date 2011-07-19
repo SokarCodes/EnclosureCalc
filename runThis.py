@@ -20,5 +20,6 @@ newProject.setHeight(65.0)
 newProject.printAll()
 del newProject
 shiva = driverManager("testi")
+shiva.setSd(10)
 del shiva
 # program ends here

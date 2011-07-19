@@ -51,10 +51,136 @@ class driverManager:
         
     def __del__(self):
         '''Deletes instance of driver from driver list '''
+        print 'Deleting driver instance: {0}'.format(self.name)
         driverManager.drivers.remove(self.name)
-        
-        
 
+    def setQts(self, Qts):
+        self.Qts = Qts
+
+    def setQms(self, Qms):
+        self.Qms = Qms
+
+    def setQes(self, Qes):
+        self.Qes = Qes
+
+    def setFs(self, Fs):
+        self.Fs = Fs
+
+    def setVas(self, Vas):
+        self.Vas = Vas
+
+    def setSd(self, Sd):
+        self.Sd = Sd
+
+    def setMms(self, Mms):
+        self.Mms = Mms
+
+    def setCms(self, Cms):
+        self.Cms = Cms
+
+    def setRms(self, Rms):
+        self.Rms = Rms
+
+    def setRe(self, Re):
+        self.Re = Re
+
+    def setLE(self, Le):
+        self.Le = Le
+
+    def setBl(self, Bl):
+        self.Bl = Bl
+
+    def setXmax(self, Xmax):
+        self.Xmax = Xmax
+
+    def setXmech(self, Xmech):
+        self.Xmech = Xmech
+    
+    def setSd(self, Sd):
+        self.Sd = Sd
+    
+    def setPe(self, Pe):
+        self.Pe = Pe
+    
+    def setEBP(self, EBP):
+        self.EBP = EBP
+    
+    def setN0(self, N0):
+        self.N0 = N0
+    
+    def setSens(self, Sens):
+        self.Sens = Sens
+        
+    def setZmax(self, Zmax):
+        self.Zmax = Zmax    
+    
+    def setZnom(self, Znom):
+        self.Znom = Znom
+        
+    def getQts(self):
+        return self.Qts
+
+    def getQms(self):
+        return self.Qms
+
+    def getQes(self):
+        return self.Qes
+
+    def getFs(self):
+        return self.Fs
+
+    def getVas(self):
+        return self.Vas
+
+    def getSd(self):
+        return self.Sd
+
+    def getMms(self):
+        return self.Mms
+
+    def getCms(self):
+        return self.Cms
+
+    def getRms(self):
+        return self.Rms
+
+    def getRe(self):
+        return self.Re
+
+    def getLE(self):
+        return self.Le
+
+    def getBl(self):
+        return self.Bl
+
+    def getXmax(self):
+        return self.Xmax
+
+    def getXmech(self):
+        return self.Xmech
+    
+    def getSd(self):
+        return self.Sd
+    
+    def getPe(self):
+        return self.Pe
+    
+    def getEBP(self):
+        return self.EBP
+    
+    def getN0(self):
+        return self.N0
+    
+    def getSens(self):
+        return self.Sens
+        
+    def getZmax(self):
+        return self.Zmax    
+    
+    def getZnom(self):
+        return self.Znom
+        
+        
 class enclosureManager:
     '''With enclosureManager-class one can start speakerbox simulation which helps with common DIY loudspeaker
 	mathematical operations. For now this class helps only subwoofer design but it extends rapidly. '''
