@@ -54,6 +54,15 @@ class driverManager:
         print 'Deleting driver instance: {0}'.format(self.name)
         driverManager.drivers.remove(self.name)
 
+    def __calculateN0(self):
+        #self.N0 = DO THIS! 
+
+    def __calculateEBP(self):
+        self.EBP = self.Fs / self.Qes
+        
+    def __calculateZmax(self):
+        self.Zmax = self.Re * (1 + self.Qms / self.Qes)
+
     def setQts(self, Qts):
         self.Qts = Qts
 
