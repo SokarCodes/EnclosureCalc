@@ -1,4 +1,5 @@
 from enclosureCalc import enclosureManager
+from enclosureCalc import driverManager
 
 # Test program starts here
 print '''************************************************
@@ -18,4 +19,6 @@ print 'Setting height: 65cm'
 newProject.setHeight(65.0)
 newProject.printAll()
 del newProject
+shiva = driverManager("testi")
+del shiva
 # program ends here

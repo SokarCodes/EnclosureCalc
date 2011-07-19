@@ -6,6 +6,55 @@
 
 import math
 
+class driverManager:
+    '''DriverManager encapsulates all the electrical variables of speaker driver entity. With these variables
+    one can calculate response curves for different box/driver combinations.'''
+    # Class variable. Names of all instances created from this class
+    drivers = []
+    
+    def __init__(self,name):
+        '''Defines all Thiele/small variables and sets them to zero.'''
+        
+        self.name = name
+        
+        # Small signal parameters
+        self.Qts = 0            # Total Q of the driver at Fs 
+        self.Qms = 0            # Mechanical Q of the driver at Fs
+        self.Qes = 0            # Electrical Q of the driver at Fs
+        self.Fs = 0             # Resonant frequency of the driver
+        self.Vas = 0            # Equivalent Compliance Volume
+        
+        # Fundamental small signal mechanical parameters
+        self.Sd = 0             # Projected area of the driver diaphragm, in square metres.
+        self.Mms = 0            # Mass of the diaphragm/coil, including acoustic load, in kilograms.
+        self.Cms = 0            # Compliance of the driver's suspension, in metres per newton (the reciprocal of its 'stiffness').
+        self.Rms = 0            # The mechanical resistance of a driver's suspension (ie, 'lossiness') in N*s/m
+        self.Re = 0             # DC resistance of the voice coil, measured in ohms.
+        self.Le = 0             # Voice coil inductance measured in millihenries (mH) (Frequency dependent, usually measured at 1 kHz).
+        self.Bl = 0             # The product of magnet field strength in the voice coil gap and the length of wire in the magnetic field, in tesla-metres (T*m).
+        
+        # Large signal parameters
+        self.Xmax = 0           # Maximum linear peak excursion (in mm) of the cone.
+        self.Xmech = 0          # Maximum physical excursion of the driver before physical damage.
+        self.Sd = 0             # Peak displacement volume, calculated by Vd = Sd*Xmax
+        self.Pe = 0             # Thermal power handling capacity of the driver, in watts.
+        
+        # Other parameters
+        self.EBP = 0            # The efficiency bandwidth product, a rough indicator measure.
+        self.N0 = 0             # The reference or "power available" efficiency of the driver, in percent.
+        self.Sens = 0           # Sensitivity of the driver
+        self.Zmax = 0           # The impedance of the driver at Fs, used when measuring Qes and Qms.
+        self.Znom = 0           # The nominal impedance of the loudspeaker, typically 4, 8 or 16 ohms.
+        
+        print 'Creating driver instance: {0}'.format(self.name)
+        driverManager.drivers.append(self.name)            
+        
+    def __del__(self):
+        '''Deletes instance of driver from driver list '''
+        driverManager.drivers.remove(self.name)
+        
+        
+
 class enclosureManager:
     '''With enclosureManager-class one can start speakerbox simulation which helps with common DIY loudspeaker
 	mathematical operations. For now this class helps only subwoofer design but it extends rapidly. '''
