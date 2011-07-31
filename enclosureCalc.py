@@ -9,8 +9,9 @@ import math
 class driverManager:
     '''DriverManager encapsulates all the electrical variables of speaker driver entity. With these variables
     one can calculate response curves for different box/driver combinations.'''
-    # Class variable. Names of all instances created from this class
-    drivers = []
+    drivers = []    # Class variable. Names of all instances created from this class
+    p = 1.184       # Density of air at 25C degree, in kg/m^3.
+    c = 346.1       # Speed of sound, in m/s.
     
     def __init__(self,name):
         '''Defines all Thiele/small variables and sets them to zero.'''
@@ -42,7 +43,7 @@ class driverManager:
         # Other parameters
         self.EBP = 0            # The efficiency bandwidth product, a rough indicator measure.
         self.N0 = 0             # The reference or "power available" efficiency of the driver, in percent.
-        self.Sens = 0           # Sensitivity of the driver
+        self.Sens = 0           # Sensitivity of the driver, in dB.
         self.Zmax = 0           # The impedance of the driver at Fs, used when measuring Qes and Qms.
         self.Znom = 0           # The nominal impedance of the loudspeaker, typically 4, 8 or 16 ohms.
         
@@ -54,8 +55,23 @@ class driverManager:
         print 'Deleting driver instance: {0}'.format(self.name)
         driverManager.drivers.remove(self.name)
 
+    def __calculateFs(self):
+        self.Fs = 1 / ( 2 * math.pi * (self.Cms * self.Mms)**0.5 )
+
+    def __calculateQes(self):
+        self.Qes = (2 * math.pi * self.Fs * self.Mms * self.Re) / (self.Bl**2)
+
+    def __calculateQms(self):
+        self.Qms = (2 * math.pi * self.Fs * self.Mms) / self.Rms
+
+    def __calculateQts(self):
+        self.Qts = (self.Qms * self.Qes) / (self.Qms + self.Qes)
+
+    def __calculateVas(self):
+        self.Vas = p * c**2 * self.Sd**2 * self.Cms * 1000
+
     def __calculateN0(self):
-        #self.N0 = DO THIS! 
+        self.N0 = (p / 2*math.pi*c) * (( self.Bl**2 * self.Sd**2 ) / (self.Mms**2 * self.Re**2)) * 100  
 
     def __calculateEBP(self):
         self.EBP = self.Fs / self.Qes
