@@ -12,3 +12,4 @@ Version history:
   12.7.2011 v0.2.5, Continued class development. Also slight optimizations to code structure.
   15.7.2011 v0.2.9, Made github project and separated test method and enclosureManager class to different files.
   19.7.2011 v0.3, Started creating driverManager class 
+  31.7.2011 v0.3.3, Added rest of the calculator methods for small signal parameters.
