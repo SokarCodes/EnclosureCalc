@@ -1,25 +1,31 @@
 from enclosureCalc import enclosureManager
 from enclosureCalc import driverManager
+from window import Ui_MainWindow
+import os,sys
+
+# Import Qt modules
+from PyQt4 import QtCore,QtGui
+
 
 # Test program starts here
-print '''************************************************
-Welcome to test program. This program testdrives enclosureManager class by setting parameters.
-You can modify it yourself to test different scenarios although there are not much to test yet.
-************************************************'''
-newProject = enclosureManager("testi")
-enclosureManager.printProjects()
-newProject.setDimensions(51.0,62.0,61.0,2.2)
-print 'Setting port: 15.24 cm diameter and 20Hz tune' 
-newProject.setPort(15.24, 20)
-newProject.printAll()
-print 'setting driver'
-newProject.setDriver(5)
-newProject.printAll()
-print 'Setting height: 65cm'
-newProject.setHeight(65.0)
-newProject.printAll()
-del newProject
-shiva = driverManager("testi")
-shiva.setSd(10)
-del shiva
+# Create a class for our main window
+class Main(QtGui.QMainWindow):
+    def __init__(self):
+        QtGui.QMainWindow.__init__(self)
+
+        # This is always the same
+        self.ui=Ui_MainWindow()
+        self.ui.setupUi(self)
+
+def main():
+    # Again, this is boilerplate, it's going to be the same on
+    # almost every app you write
+    app = QtGui.QApplication(sys.argv)
+    window=Main()
+    window.show()
+    # It's exec_ because exec is a reserved word in Python
+    sys.exit(app.exec_())
+
+if __name__ == "__main__":
+    main()
 # program ends here
