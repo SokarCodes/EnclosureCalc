@@ -47,12 +47,13 @@ class driverManager:
         self.Zmax = 0           # The impedance of the driver at Fs, used when measuring Qes and Qms.
         self.Znom = 0           # The nominal impedance of the loudspeaker, typically 4, 8 or 16 ohms.
         
-        print 'Creating driver instance: {0}'.format(self.name)
+#        print 'Creating driver instance: {0}'.format(self.name)
+        print('Creating driver instance: ', self.name)
         driverManager.drivers.append(self.name)            
         
     def __del__(self):
         '''Deletes instance of driver from driver list '''
-        print 'Deleting driver instance: {0}'.format(self.name)
+        print('Deleting driver instance: ', self.name)
         driverManager.drivers.remove(self.name)
 
     def __calculateFs(self):
@@ -230,17 +231,17 @@ class enclosureManager:
         self.iterFlag = True      # used with port iterator
         
         # Lets add this project to class variable as open project
-        print 'Creating project {0}'.format(self.name)
+        print('Creating project ', self.name)
         enclosureManager.projects.append(self.name)
  
     def printProjects():
         '''Static method which prints all instances made from this class.'''
-        print 'Projects open: {0}'.format(enclosureManager.projects)
+        print('Projects open: ', enclosureManager.projects)
     printProjects = staticmethod(printProjects)   
     
     def __del__(self):
         '''Deletes instance of enclosureManager form project list'''
-        print 'Deleting project {0}'.format(self.name)
+        print('Deleting project ', self.name)
         enclosureManager.projects.remove(self.name)
     
     def __updateVolume(self):
@@ -267,18 +268,19 @@ class enclosureManager:
                 self.tune = tune
                 break
         iterFlag = True
-        print 'Calculating port...' # This is here for fun, lol
+        print('Calculating port...') # This is here for fun, lol
   
     def printAll(self):
-        '''Prints all calculated parameters.'''
-        print '''{0} has these attributes: 
-        outerVolume: \t\t{1:.2f} litres
-        grossVolume: \t\t{2:.2f} litres
-        netVolume: \t\t{3:.2f} litres
-        material thickness: \t{4:.1f} mm
-        Port tuning: \t\t{5:.1f} Hz
-        Port length: \t\t{6:.1f} cm
-        Port volume: \t\t{7:.1f} litres'''.format(self.name, self.outerVolume, self.grossVolume, self.netVolume, self.material*10, self.tune, self.portLen, self.portVol)
+        pass
+#        '''Prints all calculated parameters.'''
+#        print '''{0} has these attributes: 
+#        outerVolume: \t\t{1:.2f} litres
+#        grossVolume: \t\t{2:.2f} litres
+#        netVolume: \t\t{3:.2f} litres
+#        material thickness: \t{4:.1f} mm
+#        Port tuning: \t\t{5:.1f} Hz
+#        Port length: \t\t{6:.1f} cm
+#        Port volume: \t\t{7:.1f} litres'''.format(self.name, self.outerVolume, self.grossVolume, self.netVolume, self.material*10, self.tune, self.portLen, self.portVol)
 
     def setDimensions(self, width, height, depth, material):
         '''Sets parameters of the enclosure and calculates box volume.'''
@@ -369,5 +371,5 @@ class enclosureManager:
         return self.depth
 
 if __name__ == "__main__":
-    print 'This file is designed to be imported from actual main-program. \nAPI is here so make use of it.'
-    print 'Program ending'
+    print('This file is designed to be imported from actual main-program. \nAPI is here so make use of it.')
+    print('Program ending')
